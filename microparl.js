@@ -18,9 +18,9 @@ function arcdot(colors, angle=0.5, aspect_ratio=0.3, margin=.1, minscale=2, widt
     
     const scale = Math.max(minscale, 2/MAGIC*Math.sqrt(SEATS)); // This roughly controls how many seats per row we expect. I have no idea why there is a 2 in here, it is a magic number I dreamed up of late at night to make it all work.
     if (scale <= 0) {
-        throw new Error('Invalid Paremeters');
+        throw new Error('Invalid Parameters');
     }
-    let lower = ANGLE < 0.5 ? 0.5 * VB_RES + 0.25*VB_RES/scale : 0.5*VB_RES*(1 - Math.cos(Math.PI * ANGLE)) + 0.25*VB_RES/scale;
+    const lower = ANGLE < 0.5 ? 0.5 * VB_RES + 0.25*VB_RES/scale : 0.5*VB_RES*(1 - Math.cos(Math.PI * ANGLE)) + 0.25*VB_RES/scale;
     let svg = '';
     svg += `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${VB_RES} ${lower.toFixed(1)}" width="100%" fill="none">`;
 
