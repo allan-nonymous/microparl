@@ -2,7 +2,7 @@
 Licensed under the MIT License
 */
 
-function arcdot(colors, angle=0.5, aspect_ratio=0.3, margin=.1, minscale=2, width=200, height=200,  angle_start=(0.25-0.5*angle)) {
+function arcdot(colors, angle=0.5, aspect_ratio=0.3, margin=.1, minscale=2, width='100%',  angle_start=(0.25-0.5*angle)) {
     /* We treat the arch diagram as a disc with area = (scale**2)*(pi*angle)*(1 - aspect_ratio**2), we try to fit in UNIT squares (of area 1).
        We solve for scale: scale = sqrt(area/(pi*angle*(1 - aspect_ratio**2))) = sqrt(area)*sqrt(1/(pi*angle*(1 - aspect_ratio**2)))
     */
@@ -22,7 +22,7 @@ function arcdot(colors, angle=0.5, aspect_ratio=0.3, margin=.1, minscale=2, widt
     }
     const lower = ANGLE < 0.5 ? 0.5 * VB_RES + 0.25*VB_RES/scale : 0.5*VB_RES*(1 - Math.cos(Math.PI * ANGLE)) + 0.25*VB_RES/scale;
     let svg = '';
-    svg += `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${VB_RES} ${lower.toFixed(1)}" width="100%" fill="none">`;
+    svg += `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${VB_RES} ${lower.toFixed(1)}" width=${width} fill="none">`;
 
     // Build the rows
     let rows = [0]; // Don't ask why this purges tiny rows, it just does.
